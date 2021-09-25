@@ -1,5 +1,5 @@
 class Pawn:
-    pass
+
     def valid_moves(self):
         return False
     # def __init__(self, x2, y2):
@@ -27,7 +27,9 @@ class Pawn:
 
 
 class Rook:
-        pass
+    
+    def valid_moves(self):
+        return False
     # def __init__(self, x2, y2):
     #     self.x2 = x2
     #     self.y2 = y2
@@ -40,7 +42,8 @@ class Rook:
 
 
 class Knight:
-    pass
+    def valid_moves(self):
+        return False
     # def __init__(self, x2, y2):
     #     self.x2 = x2
     #     self.y2 = y2
@@ -54,7 +57,8 @@ class Knight:
 
 
 class Bishop:
-    pass
+    def valid_moves(self):
+        return False
     # def __init__(self, x2, y2):
     #     self.x2 = x2
     #     self.y2 = y2
@@ -67,7 +71,8 @@ class Bishop:
 
 
 class Queen:
-    pass
+    def valid_moves(self):
+        return False
     # def __init__(self, x2, y2):
     #     self.x2 = x2
     #     self.y2 = y2
@@ -84,7 +89,8 @@ class Queen:
 
 
 class king:
-    pass
+    def valid_moves(self):
+        return False
     # def __init__(self, x2, y2):
     #     self.x2 = x2
     #     self.y2 = y2

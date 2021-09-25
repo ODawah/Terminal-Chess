@@ -41,3 +41,23 @@ def pawn_cant_move_B():
 def pawn_eat_pawn_B():
     assert Pawn(5,7,"Black") == [(4,6)]
 
+#########################################
+
+# Rook
+
+def rook_blocked_intial():
+    r = Rook(0,0,"White")
+
+    assert r.valid_moves == []
+
+def rook_mid_blocker():
+    r = Rook(3,3,"White")
+
+    assert r.valid_moves == [(2,3),(3,0),(3,1),(3,2),(3,4),(4,3),(5,3)]
+
+def rook_mid_enemy():
+    r = Rook(4,2,"Black")
+
+    assert r.valid_moves == [(5,2),(4,0),(4,1),(3,2),(4,3),(4,4),(4,5),(4,6),(4,7)]
+
+
