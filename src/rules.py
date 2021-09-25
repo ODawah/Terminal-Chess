@@ -88,7 +88,7 @@ class Queen:
     #         return False
 
 
-class king:
+class King:
     def valid_moves(self):
         return False
     # def __init__(self, x2, y2):
