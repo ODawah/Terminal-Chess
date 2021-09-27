@@ -16,14 +16,11 @@ To Run The tests type in the command line
 we made four tests for each color,
 Because Pawn moves only Forward
 ------------------------------
-
 1- Check when it can move forward freely
 2- Check when it can only move one forward 
 3- Check when it is blocked and can't move
 4- Check when it can eat another piece
-
 -------------------------------
-
 
 # Rook
 --

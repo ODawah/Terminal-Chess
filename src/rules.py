@@ -112,9 +112,10 @@ class King:
     def __init__(self,x,y,color):
         self.position = (x,y)
         self.color = color
-        
+
     def valid_moves(self):
         return False
+        
     # def __init__(self, x2, y2):
     #     self.x2 = x2
     #     self.y2 = y2
