@@ -11,3 +11,7 @@ class Board():
         [  Pawn(6,0,"Black")  ,  Pawn(6,1,"Black")    ,  Pawn(6,2,"Black")    ,  Pawn(6,3,"Black")   ,  Pawn(6,4,"Black")  ,  Pawn(6,5,"Black")    ,  Pawn(6,6,"Black")    ,  Pawn(6,7,"Black")  ],
         [  Rook(7,0,"Black")  ,  Bishop(7,1,"Black")  ,  Knight(7,2,"Black")  ,  Queen(7,3,"Black")  ,  King(7,4,"Black")  ,  Knight(7,5,"Black")  ,  Bishop(7,6,"Black")  ,  Rook(7,7,"Black")  ],
     ]
+
+    def make_move(self,x2,y2):
+        pass
+        

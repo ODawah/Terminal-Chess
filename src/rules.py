@@ -1,4 +1,7 @@
-class Pawn:
+from .pieces import Board
+
+
+class Pawn(Board):
     def __init__(self,x,y,color):
         self.x = x
         self.y = y
@@ -35,7 +38,7 @@ class Pawn:
     #             return False
 
 
-class Rook:
+class Rook(Board):
     def __init__(self,x,y,color):
         self.position = (x,y)
         self.color = color
@@ -53,7 +56,7 @@ class Rook:
     #         return False
 
 
-class Knight:
+class Knight(Board):
     def __init__(self,x,y,color):
         self.position = (x,y)
         self.color = color
@@ -72,7 +75,7 @@ class Knight:
             
 
 
-class Bishop:
+class Bishop(Board):
     def __init__(self,x,y,color):
         self.position = (x,y)
         self.color = color
@@ -90,7 +93,7 @@ class Bishop:
     #         return False
 
 
-class Queen:
+class Queen(Board):
     def __init__(self,x,y,color):
         self.position = (x,y)
         self.color = color
@@ -112,7 +115,7 @@ class Queen:
     #         return False
 
 
-class King:
+class King(Board):
     def __init__(self,x,y,color):
         self.position = (x,y)
         self.color = color
