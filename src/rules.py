@@ -1,10 +1,14 @@
 class Pawn:
     def __init__(self,x,y,color):
-        self.position = (x,y)
+        self.x = x
+        self.y = y
         self.color = color
 
 
     def valid_moves(self):
+        valid = []
+        if(self.color == "White"):
+            pass
 
         return False
     # def __init__(self, x2, y2):
