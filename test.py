@@ -1,78 +1,105 @@
 from src import pieces
 
 
-def example_pawn_data_W():
-    p = pieces.Pawn(1, 3, "White")
-    return p.valid_moves
-
-
-def example_pawn_data_B():
-    p = pieces.Pawn(6, 7, "Black")
-    return p.valid_moves
-
-
-class Test_pawn_white:
-    def test_pawn_free_forward_W(self):
-        assert example_pawn_data_W == [(2, 3), (3, 3)]
-
-    def test_pawn_one_forward_W(self):
-        assert example_pawn_data_W == [(2, 3)]
-
-    def test_pawn_cant_move_W(self):
-        assert example_pawn_data_W == []
-
+class Test_unit_pawn_white:
     def test_pawn_upleft_corner_W(self):
         p = pieces.Pawn(0, 0, "White")
-        assert p.valid_moves == [(1, 0), (2, 0)]
+        assert p.valid_moves() == [(1, 0), (2, 0)]
 
     def test_pawn_upright_corner_W(self):
         p = pieces.Pawn(0, 7, "White")
-        assert p.valid_moves == [(1, 7), (2, 7)]
+        assert p.valid_moves() == [(1, 7), (2, 7)]
 
     def test_pawn_downleft_one_corner_W(self):
         p = pieces.Pawn(6, 0, "White")
-        assert p.valid_moves == [(7, 0)]
+        assert p.valid_moves() == [(7, 0)]
 
     def test_pawn_downleft_two_corner_W(self):
         p = pieces.Pawn(5, 0, "White")
-        assert p.valid_moves == [(6, 0), (7, 0)]
+        assert p.valid_moves() == [(6, 0), (7, 0)]
 
     def test_pawn_downright_one_corner_W(self):
         p = pieces.Pawn(6, 7, "White")
-        assert p.valid_moves == [(7, 7)]
+        assert p.valid_moves() == [(7, 7)]
 
     def test_pawn_downright_two_corner_W(self):
         p = pieces.Pawn(5, 7, "White")
-        assert p.valid_moves == [(6, 7), (7, 7)]
+        assert p.valid_moves() == [(6, 7), (7, 7)]
 
     def test_pawn_outleft_W(self):
         p = pieces.Pawn(2, -2, "White")
-        assert p.valid_moves == ("piece outside of the board")
+        assert p.valid_moves() == ("piece outside of the board")
 
     def test_pawn_outright_W(self):
         p = pieces.Pawn(0, 9, "White")
-        assert p.valid_moves == ("piece outside of the board")
-    
+        assert p.valid_moves() == ("piece outside of the board")
+
     def test_pawn_outup_W(self):
         p = pieces.Pawn(-3, 2, "White")
-        assert p.valid_moves == ("piece outside of the board")
+        assert p.valid_moves() == ("piece outside of the board")
 
     def test_pawn_outdown_W(self):
         p = pieces.Pawn(10, 2, "White")
-        assert p.valid_moves == ("piece outside of the board")
+        assert p.valid_moves() == ("piece outside of the board")
 
-        
+    def test_pawn_free_forward_W(self):
+        p = pieces.Pawn(3, 3, "White")
+        assert p.valid_moves() == [(4, 3), (5, 3)]
+    
+    def test_pawn_blocked_W(self):
+        p = pieces.Pawn(7, 3, "White")
+        assert p.valid_moves() == []
 
 
-class Test_pawn_black:
+class Test_unit_pawn_black:
+    def test_pawn_downleft_corner_B(self):
+        p = pieces.Pawn(7,0,"Black")
+        assert p.valid_moves() == [(6,0),(5,0)]
+    
+    def test_pawn_downright_corner_B(self):
+        p = pieces.Pawn(7,7,"Black")
+        assert p.valid_moves() == [(6,7),(5,7)]
+    
+    def test_pawn_upleft_one_corner_B(self):
+        p = pieces.Pawn(1,0,"Black")
+        assert p.valid_moves() == [(0,0)]
+
+    def test_pawn_upleft_two_corner_B(self):
+        p = pieces.Pawn(2,0,"Black")
+        assert p.valid_moves() == [(1,0),(0,0)]
+
+    def test_pawn_upright_one_corner_B(self):
+        p = pieces.Pawn(1,7,"Black")
+        assert p.valid_moves() == [(0,7)]
+    
+    def test_pawn_upright_two_corner_B(self):
+        p = pieces.Pawn(2,7,"Black")
+        assert p.valid_moves() == [(1,7),(0,7)]
+
+    def test_pawn_outleft_B(self):
+        p = pieces.Pawn(5, -2, "Black")
+        assert p.valid_moves() == ("piece outside of the board")
+
+    def test_pawn_outright_B(self):
+        p = pieces.Pawn(7, 9, "Black")
+        assert p.valid_moves() == ("piece outside of the board")
+
+    def test_pawn_outup_B(self):
+        p = pieces.Pawn(-3, 2, "Black")
+        assert p.valid_moves() == ("piece outside of the board")
+
+    def test_pawn_outdown_B(self):
+        p = pieces.Pawn(10, 2, "Black")
+        assert p.valid_moves() == ("piece outside of the board")
+
     def test_pawn_free_forward_B(self):
-        assert example_pawn_data_B == [(5, 7), (4, 7)]
+        p = pieces.Pawn(6, 5, "Black")
+        assert p.valid_moves() == [(5, 5), (4, 5)]
 
-    def test_pawn_one_forward_B(self):
-        assert example_pawn_data_B == [(5, 7)]
+    def test_pawn_blocked_B(self):
+        p = pieces.Pawn(0,3,"Black")
+        assert p.valid_moves() == []
 
-    def test_pawn_cant_move_B(self):
-        assert example_pawn_data_B == []
 
 
 #########################################

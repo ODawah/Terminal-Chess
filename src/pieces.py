@@ -1,37 +1,36 @@
 class piece:
+    valid = []
+
     def __init__(self, x, y, color):
         self.x = x
         self.y = y
         self.color = color
 
 
-class Pawn():
-    def __init__(self, x, y, color):
-        self.x = x
-        self.y = y
-        self.color = color
+class Pawn(piece):
 
     def valid_moves(self):
-        return []
-    # def rule(self,player,x1,y1):
-    #     if player == 1:
-    #         if (self.y2 - y1 == 2) and x1 == 1:
-    #             return True
-    #         elif (self.y2 - y1 == 1):
-    #             return True
-    #         else:
-    #             print("pawn doesn't move like that")
-    #             return False
+        valid = []
 
-    #     elif player == 2:
-    #         if (self.y2 - y1 == -2) and x1 == 6:
-    #             return True
-    #         elif (self.y2 - y1 == -1):
-    #             return True
-    #         else:
-    #             print("pawn doesn't move like that")
-    #             return False
+        if(self.color == "White"):
+            if(self.x in range(0, 8) and self.y in range(0, 8)):
+                if((self.x + 1) in range(self.x + 1, 8)):
+                    valid.append((self.x + 1, self.y))
+                    if((self.x + 2) in range(self.x, 8)):
+                        valid.append((self.x + 2, self.y))
+                return valid
+            else:
+                return ("piece outside of the board")
 
+        elif(self.color == "Black"):
+            if (self.x in range(0, 8) and self.y in range(0, 8)):
+                if((self.x - 1) in range(0, 8)):
+                    valid.append((self.x - 1, self.y))
+                    if((self.x - 2) in range (0,8)):
+                        valid.append((self.x - 2, self.y))
+                return valid
+            else:
+                return ("piece outside of the board")
 
 class Rook(piece):
 
@@ -112,6 +111,7 @@ class King(piece):
     #     else:
     #         return False
 
-p = Pawn(0,0,"White")
 
-print(p.valid_moves)
+p = Pawn(0, 0, "White")
+
+print(p.valid_moves())

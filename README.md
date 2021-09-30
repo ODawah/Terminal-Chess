@@ -8,18 +8,20 @@
 ------------------------------
 
 To Run The tests type in the command line
-"pytest test.py"
+1- `pipenv shell`
+2 -`pytest test.py`
 
 ------------------------------
 # Pawn
 --
-we made four tests for each color,
+we made 12 tests for each color,
 Because Pawn moves only Forward
 ------------------------------
-1- Check when it can move forward freely
-2- Check when it can only move one forward 
-3- Check when it is blocked and can't move
-4- Check when it can eat another piece
+1- 2 tests to check at the start corners
+2- 4 tests at the end corners if he has 1 or 2 moves 
+3- 4 tests to check if piece is outside the board
+4- check output in middle of board
+5- check output if blocked at end of board
 -------------------------------
 
 # Rook
