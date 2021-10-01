@@ -26,11 +26,12 @@ Because Pawn moves only Forward
 
 # Rook
 --
-we made three tests for rook piece
+we made 11 tests for rook piece
 ---------------------------------
-1- Check when it blocked and can't move
-2- Check when it has a path blocked with the team piece
-3- Check When it has enemy in the path
+1- 4 tests for the piece at each corner
+2- 2 tests for the piece at right and left side of the board
+3- 4 tests to check if the piece is outside the board
+4- 1 test check if the board in the middle of the board
 ---------------------------------
 
 # King
