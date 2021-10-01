@@ -31,16 +31,17 @@ we made 11 tests for rook piece
 1- 4 tests for the piece at each corner
 2- 2 tests for the piece at right and left side of the board
 3- 4 tests to check if the piece is outside the board
-4- 1 test check if the board in the middle of the board
+4- 1 test for the piece in the middle of the board
 ---------------------------------
 
 # King
 --
-we made three tests for king piece
+we made 9 tests for king piece
 ---------------------------------
-1- check when it blocked and can't move
-2- check when it have blocked move
-3- check when it's free to move anywhere
+1- 4 tests for the piece at the corners
+2- 2 tests for the piece at right and left of the board
+3- 1 tests for the piece at the middle of the board
+4- 4 tests check if the piece is outside of the board
 ---------------------------------
 
 # Knight

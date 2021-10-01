@@ -147,12 +147,12 @@ class Test_unit_rook():
 
     def test_rook_middle_left_W(self):
         r = pieces.Rook(3, 0, "White")
-        assert r.valid_moves() == [(0, 0), (1, 0), (2, 0) , (4, 0), (5, 0), (
+        assert r.valid_moves() == [(0, 0), (1, 0), (2, 0), (4, 0), (5, 0), (
             6, 0), (7, 0), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (3, 7)]
 
     def test_rook_middle_left_B(self):
         r = pieces.Rook(3, 0, "Black")
-        assert r.valid_moves() == [(0, 0), (1, 0), (2, 0) , (4, 0), (5, 0), (
+        assert r.valid_moves() == [(0, 0), (1, 0), (2, 0), (4, 0), (5, 0), (
             6, 0), (7, 0), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (3, 7)]
 
     def test_rook_middle_right_W(self):
@@ -199,29 +199,153 @@ class Test_unit_rook():
 
     def test_rook_middle_B(self):
         r = pieces.Rook(4, 4, "Black")
-        assert r.valid_moves() == [(0, 4), (1, 4), (2,4), (3, 4), (5, 4), (
+        assert r.valid_moves() == [(0, 4), (1, 4), (2, 4), (3, 4), (5, 4), (
             6, 4), (7, 4), (4, 0), (4, 1), (4, 2), (4, 3), (4, 5), (4, 6), (4, 7)]
 
     def test_rook_middle_W(self):
         r = pieces.Rook(4, 4, "White")
-        assert r.valid_moves() == [(0, 4), (1, 4), (2,4), (3, 4), (5, 4), (
-            6, 4), (7, 4), (4, 0), (4, 1), (4, 2), (4, 3), (4, 5), (4, 6), (4, 7)]
+        a = r.valid_moves()
+        b = [
+            (6, 4), (0, 4), (1, 4), (2, 4), (3, 4), (5, 4), (7, 4), (4, 0), (4, 1), (4, 2), (4, 3), (4, 5), (4, 6), (4, 7)]
+        diff  = set(a) ^ set(b)
+        assert not diff 
 
 
 ########################################
 
 # King
 
+class Test_unit_king:
 
-def test_King_blocked():
-    k = pieces.King(0, 4, "White")
-    assert k.valid_moves() == []
+    def test_King_upleft_corner_W(self):
+        k = pieces.King(0, 0, "White")
+        a = k.valid_moves() 
+        b = [(0, 1), (1, 1), (1, 0)]
+        diff  = set(a) ^ set(b)
+        assert not diff
 
+    def test_King_upleft_corner_B(self):
+        k = pieces.King(0, 0, "Black")
+        a = k.valid_moves() 
+        b = [(0, 1), (1, 1), (1, 0)]
+        diff  = set(a) ^ set(b)
+        assert not diff
 
-def test_King_blocked_move():
-    k = pieces.King(6, 4, "Black")
-    assert k.valid_moves == [(7, 4), (5, 4), (5, 5)]
-# still searching for the rules
+    def test_King_upright_corner_W(self):
+        k = pieces.King(0, 7, "White")
+        a = k.valid_moves()
+        b = [(1, 7), (0, 6), (1, 6)]
+        diff = set(a) ^ set(b)
+        assert not diff
+    
+    def test_King_upright_corner_B(self):
+        k = pieces.King(0, 7, "Black")
+        a = k.valid_moves()
+        b = [(1, 7), (0, 6), (1, 6)]
+        diff = set(a) ^ set(b)
+        assert not diff
+
+    def test_King_downleft_corner_W(self):
+        k = pieces.King(7, 0, "White")
+        a = k.valid_moves() 
+        b = [(7, 1), (6, 1), (6, 0)]
+        diff = set(a) ^ set(b)
+        assert not diff
+    
+    def test_King_downleft_corner_B(self):
+        k = pieces.King(7, 0, "Black")
+        a = k.valid_moves() 
+        b = [(7, 1), (6, 1), (6, 0)]
+        diff = set(a) ^ set(b)
+        assert not diff
+
+    def test_King_downright_corner_W(self):
+        k = pieces.King(7, 7, "White")
+        a = k.valid_moves() 
+        b = [(7, 6), (6, 6), (6, 7)]
+        diff = set(a) ^ set(b)
+        assert not diff
+
+    def test_King_downright_corner_B(self):
+        k = pieces.King(7, 7, "Black")
+        a = k.valid_moves() 
+        b = [(7, 6), (6, 6), (6, 7)]
+        diff = set(a) ^ set(b)
+        assert not diff
+
+    def test_king_midright_W(self):
+        k = pieces.King(3, 7, "White")
+        a = k.valid_moves()
+        b = [(2, 7), (2, 6), (3, 6), (4, 6), (4, 7)]
+        diff = set(a) ^ set(b)
+        assert not diff
+    
+    def test_king_midright_B(self):
+        k = pieces.King(3, 7, "Black")
+        a = k.valid_moves()
+        b = [(2, 7), (2, 6), (3, 6), (4, 6), (4, 7)]
+        diff = set(a) ^ set(b)
+        assert not diff
+
+    def test_king_midleft_W(self):
+        k = pieces.King(4, 0, "White")
+        a = k.valid_moves()
+        b = [(3, 0), (3, 1), (4, 1), (5, 1), (5, 0)]
+        diff = set(a) ^ set(b)
+        assert not diff
+
+    def test_king_midleft_B(self):
+        k = pieces.King(4, 0, "Black")
+        a = k.valid_moves()
+        b = [(3, 0), (3, 1), (4, 1), (5, 1), (5, 0)]
+        diff = set(a) ^ set(b)
+        assert not diff
+
+    def test_king_middle_W(self):
+        k = pieces.King(4, 3, "White")
+        a = k.valid_moves()
+        b = [(3, 3), (3, 4), (4, 4), (5, 4), (5, 3), (5, 2), (4, 2), (3, 2)]
+        diff = set(a) ^ set(b)
+        assert not diff
+
+    def test_king_middle_B(self):
+        k = pieces.King(4, 3, "Black")
+        a = k.valid_moves()
+        b = [(3, 3), (3, 4), (4, 4), (5, 4), (5, 3), (5, 2), (4, 2), (3, 2)]
+        diff = set(a) ^ set(b)
+        assert not diff
+
+    def test_King_outleft_B(self):
+        r = pieces.King(5, -2, "Black")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_King_outleft_W(self):
+        r = pieces.King(5, -2, "White")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_King_outright_B(self):
+        r = pieces.King(7, 9, "Black")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_King_outright_W(self):
+        r = pieces.King(7, 9, "White")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_King_outup_B(self):
+        r = pieces.King(-3, 2, "Black")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_King_outup_W(self):
+        r = pieces.King(-3, 2, "White")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_King_outdown_B(self):
+        r = pieces.King(10, 2, "Black")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_King_outdown_W(self):
+        r = pieces.King(10, 2, "White")
+        assert r.valid_moves() == ("piece outside of the board")
 
 
 ###########################################
