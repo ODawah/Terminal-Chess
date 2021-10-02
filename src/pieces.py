@@ -36,18 +36,18 @@ class Pawn(piece):
 class Rook(piece):
 
     def valid_moves(self):
-        
+
         valid = []
 
         if(self.x in range(0, 8) and self.y in range(0, 8)):
-            for i in [x for x in range(0,8) if x != self.x ]:
+            for i in [x for x in range(0, 8) if x != self.x]:
                 valid.append((i, self.y))
             for j in range(0, 8):
-                if(j == self.y ):
+                if(j == self.y):
                     continue
                 else:
                     valid.append((self.x, j))
-            print(valid)        
+            print(valid)
             return valid
         else:
             return ("piece outside of the board")
@@ -115,11 +115,34 @@ class Queen(piece):
 class King(piece):
 
     def valid_moves(self):
-        return False
 
-    # def __init__(self, x2, y2):
-    #     self.x2 = x2
-    #     self.y2 = y2
+        valid = []
+
+        if (self.x in range(0, 8) and self.y in range(0, 8)):
+            if(self.x-1 in range(0,8)):
+                valid.append((self.x-1,self.y))
+            if(self.x+1 in range(0,8)):
+                valid.append((self.x+1,self.y))
+            
+            if(self.y-1 in range(0,8)):
+                valid.append((self.x,self.y-1))
+            if(self.y+1 in range(0,8)):
+                valid.append((self.x,self.y+1))
+
+            if(self.y+1 in range(0,8) and self.x+1 in range(0,8)):
+                valid.append((self.x+1,self.y+1))
+            if(self.y-1 in range(0,8) and self.x-1 in range(0,8)):
+                valid.append((self.x-1,self.y-1))
+            
+            if(self.y+1 in range(0,8) and self.x-1 in range(0,8)):
+                valid.append((self.x-1,self.y+1))
+            
+            if(self.y-1 in range(0,8) and self.x+1 in range(0,8)):
+                valid.append((self.x+1,self.y-1))
+
+            return valid
+        else:
+            return ("piece outside of the board")
 
     # def rule(self, x1, y1):
     #     if (self.x2 - x1 > 1) or (self.y2 - y1 > 1):
@@ -128,6 +151,5 @@ class King(piece):
     #         return False
 
 
-r = Rook(7, 7, "White")
-
-print(r.valid_moves())
+k = King(4, 3, "White")
+print(k.valid_moves())
