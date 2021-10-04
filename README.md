@@ -36,7 +36,7 @@ we made 11 tests for rook piece
 
 # King
 --
-we made 9 tests for king piece
+we made 11 tests for king piece
 ---------------------------------
 1- 4 tests for the piece at the corners
 2- 2 tests for the piece at right and left of the board
@@ -46,30 +46,24 @@ we made 9 tests for king piece
 
 # Knight
 --
-we made three tests for knight piece
+we made 11 tests for knight piece
 ---------------------------------
-1- check when it's free to move anywhere
-2- check when it blocked and can't move
-3- check when it have blocked move
----------------------------------
-
-# Bishop
---
-we made three tests for Bishop piece
----------------------------------
-1- check when it's blocked and can't move
-2- check when it have a blocked path
-3- check when it's free to move anywhere
+1- 4 tests for the piece at the corners 
+2- 2 teest for the piece at right and left of the board 
+3- 1 test for the piece in the middle of the board
+4- 4 tests check if the piece is outside of the board
 ---------------------------------
 
 # Bishop
 --
-we made three tests for Bishop piece
+we made 11 tests for Bishop piece
 ---------------------------------
-1- check when it's blocked and can't move
-2- check when it have a blocked path
-3- check when it's free to move anywhere
+1- 4 tests at the corners of the board
+2- 2 tests at the right and left of the board
+3- 1 test for the piece in the middle of the board
+4- 4 tests check if the piece is outside of the board
 ---------------------------------
+
 
 # Queen
 --

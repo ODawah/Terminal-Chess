@@ -352,40 +352,277 @@ class Test_unit_king:
 
 # knight
 
-def test_knight_free():
-    n = pieces.Knight(4, 3, "Black")
-    assert n.valid_moves == [(2, 4), (2, 2), (3, 5), (3, 1)]
+class Test_unit_knight:
+
+    def test_knight_upleft_corner_B(self):
+            n = pieces.Knight(0, 0, "Black")
+            a = n.valid_moves()
+            b = [(1, 2), (2, 1)]
+            diff = set(a) ^ set(b)
+            assert not diff
+
+    def test_knight_upleft_corner_W(self):
+            n = pieces.Knight(0, 0, "White")
+            a = n.valid_moves()
+            b = [(1, 2), (2, 1)]
+            diff = set(a) ^ set(b)
+            assert not diff
+    
+    def test_knight_upright_corner_B(self):
+            n = pieces.Knight(0, 7, "Black")
+            a = n.valid_moves()
+            b = [(1, 5), (2, 6)]
+            diff = set(a) ^ set(b)
+            assert not diff
+    
+    def test_knight_upright_corner_W(self):
+            n = pieces.Knight(0, 7, "White")
+            a = n.valid_moves()
+            b = [(1, 5), (2, 6)]
+            diff = set(a) ^ set(b)
+            assert not diff
+    
+    def test_knight_downleft_corner_B(self):
+            n = pieces.Knight(7, 0, "Black")
+            a = n.valid_moves()
+            b = [(5, 1), (6, 2)]
+            diff = set(a) ^ set(b)
+            assert not diff
+    
+    def test_knight_downleft_corner_W(self):
+            n = pieces.Knight(7, 0, "White")
+            a = n.valid_moves()
+            b = [(5, 1), (6, 2)]
+            diff = set(a) ^ set(b)
+            assert not diff
+
+    def test_knight_downright_corner_B(self):
+            n = pieces.Knight(7, 7, "Black")
+            a = n.valid_moves()
+            b = [(5, 6), (6, 5)]
+            diff = set(a) ^ set(b)
+            assert not diff
+    
+    def test_knight_downright_corner_W(self):
+            n = pieces.Knight(7, 7, "White")
+            a = n.valid_moves()
+            b = [(5, 6), (6, 5)]
+            diff = set(a) ^ set(b)
+            assert not diff
+    
+    def test_knight_midLeft_B(self):
+            n = pieces.Knight(4, 0, "Black")
+            a = n.valid_moves()
+            b = [(2, 1), (3, 2), (5, 2), (6, 1)]
+            diff = set(a) ^ set(b)
+            assert not diff
+    
+    def test_knight_midLeft_W(self):
+            n = pieces.Knight(4, 0, "White")
+            a = n.valid_moves()
+            b = [(2, 1), (3, 2), (5, 2), (6, 1)]
+            diff = set(a) ^ set(b)
+            assert not diff
+
+    def test_knight_midRight_B(self):
+            n = pieces.Knight(4, 7, "Black")
+            a = n.valid_moves()
+            b = [(2, 6), (3, 5), (5, 5), (6, 6)]
+            diff = set(a) ^ set(b)
+            assert not diff
+    
+    def test_knight_midRight_W(self):
+            n = pieces.Knight(4, 7, "White")
+            a = n.valid_moves()
+            b = [(2, 6), (3, 5), (5, 5), (6, 6)]
+            diff = set(a) ^ set(b)
+            assert not diff
+    
+    def test_knight_middle_B(self):
+            n = pieces.Knight(4, 4, "Black")
+            a = n.valid_moves()
+            b = [(2, 5), (2, 3), (3, 6), (5, 6), (6, 3), (6, 5), (5, 2), (3, 2)]
+            diff = set(a) ^ set(b)
+            assert not diff
+
+    def test_knight_middle_W(self):
+            n = pieces.Knight(4, 4, "White")
+            a = n.valid_moves()
+            b = [(2, 5), (2, 3), (3, 6), (5, 6), (6, 3), (6, 5), (5, 2), (3, 2)]
+            diff = set(a) ^ set(b)
+            assert not diff
+
+    def test_Knight_outleft_B(self):
+        r = pieces.Knight(5, -2, "Black")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_Knight_outleft_W(self):
+        r = pieces.Knight(5, -2, "White")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_Knight_outright_B(self):
+        r = pieces.Knight(7, 9, "Black")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_Knight_outright_W(self):
+        r = pieces.Knight(7, 9, "White")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_Knight_outup_B(self):
+        r = pieces.Knight(-3, 2, "Black")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_Knight_outup_W(self):
+        r = pieces.Knight(-3, 2, "White")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_Knight_outdown_B(self):
+        r = pieces.Knight(10, 2, "Black")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_Knight_outdown_W(self):
+        r = pieces.Knight(10, 2, "White")
+        assert r.valid_moves() == ("piece outside of the board")
 
 
-def test_knight_blocked():
-    n = pieces.Knight(0, 1, "White")
-    assert n.valid_moves == []
-
-
-def test_knight_blocked_path():
-    n = pieces.Knight(3, 3, "White")
-    assert n.valid_moves == [(2, 5), (5, 2), (5, 4)]
 
 ###########################################
 
 # Bishop
 
+class Test_unit_bishop:
 
-def test_Bishop_blocked():
-    b = pieces.Bishop(7, 2, "Black")
-    assert b.valid_moves == []
+    def test_upleft_corner_B(self):
+        w = pieces.Bishop(0, 0, "Black")
+        a = w.valid_moves()
+        b = [(1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7)]
+        diff = set(a) ^ set(b)
+        assert not diff
 
+    def test_upleft_corner_W(self):
+        b = pieces.Bishop(0, 0, "White")
+        a = b.valid_moves()
+        b = [(1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7)]
+        diff = set(a) ^ set(b)
+        assert not diff
+    
+    def test_upright_corner_B(self):
+        b = pieces.Bishop(0, 7, "Black")
+        a = b.valid_moves()
+        b = [(1, 6), (2, 5), (3, 4), (4, 3), (5, 2), (6, 1), (7, 0)]
+        diff = set(a) ^ set(b)
+        assert not diff
+    
+    def test_upright_corner_W(self):
+        b = pieces.Bishop(0, 7, "White")
+        a = b.valid_moves()
+        b = [(1, 6), (2, 5), (3, 4), (4, 3), (5, 2), (6, 1), (7, 0)]
+        diff = set(a) ^ set(b)
+        assert not diff
 
-def test_Bishop_path_blocked():
-    b = pieces.Bishop(3, 7, "White")
-    assert b.valid_moves == [(1, 5), (4, 6), (5, 5)]
+    def test_downleft_corner_B(self):
+        b = pieces.Bishop(7, 0, "Black")
+        a = b.valid_moves()
+        b = [(1, 6), (2, 5), (3, 4), (4, 3), (5, 2), (6, 1), (0, 7)]
+        diff = set(a) ^ set(b)
+        assert not diff
+    
+    def test_downleft_corner_W(self):
+        b = pieces.Bishop(7, 0, "White")
+        a = b.valid_moves()
+        b = [(6, 1), (5, 2), (4, 3), (3, 4), (2, 5), (1, 6), (0, 7)]
+        diff = set(a) ^ set(b)
+        assert not diff
+    
+    def test_downright_corner_B(self):
+        b = pieces.Bishop(7, 7, "Black")
+        a = b.valid_moves()
+        b = [(0, 0), (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6)]
+        diff = set(a) ^ set(b)
+        assert not diff
+    
+    def test_downright_corner_W(self):
+        b = pieces.Bishop(7, 7, "White")
+        a = b.valid_moves()
+        b = [(0, 0), (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6)]
+        diff = set(a) ^ set(b)
+        assert not diff
+    
+    def test_midleft_B(self):
+        b = pieces.Bishop(4, 0, "Black")
+        a = b.valid_moves()
+        b = [(5, 1), (6, 2), (7, 3), (3, 1), (2, 2), (1, 3), (0, 4)]
+        diff = set(a) ^ set(b)
+        assert not diff
+    
+    def test_midleft_W(self):
+        b = pieces.Bishop(4, 0, "White")
+        a = b.valid_moves()
+        b = [(5, 1), (6, 2), (7, 3), (3, 1), (2, 2), (1, 3), (0, 4)]
+        diff = set(a) ^ set(b)
+        assert not diff
 
+    def test_midright_B(self):
+        b = pieces.Bishop(4, 7, "Black")
+        a = b.valid_moves()
+        b = [(5, 6), (6, 5), (7, 4), (3, 6), (2, 5), (1, 4), (0, 3)]
+        diff = set(a) ^ set(b)
+        assert not diff
+    
+    def test_midright_W(self):
+        b = pieces.Bishop(4, 7, "White")
+        a = b.valid_moves()
+        b = [(5, 6), (6, 5), (7, 4), (3, 6), (2, 5), (1, 4), (0, 3)]
+        diff = set(a) ^ set(b)
+        assert not diff
 
-def test_Bishop_free():
-    b = pieces.Bishop(3, 5, "Black")
-    assert b.valid_moves == [(2, 6), (1, 7), (4, 4),
-                             (5, 3), (2, 4), (1, 3), (4, 6), (5, 7)]
+    def test_middle_B(self):
+        b = pieces.Bishop(4, 3, "Black")
+        a = b.valid_moves()
+        b = [(3, 4), (2, 5), (1, 6), (0, 7), (5, 4), (6, 5), (7, 6), (5, 2), (6, 1), (7, 0), (3, 2), (2, 1), (1, 0)]
+        diff = set(a) ^ set(b)
+        assert not diff
+    
+    def test_middle_W(self):
+        b = pieces.Bishop(4, 3, "White")
+        a = b.valid_moves()
+        b = [(3, 4), (2, 5), (1, 6), (0, 7), (5, 4), (6, 5), (7, 6), (5, 2), (6, 1), (7, 0), (3, 2), (2, 1), (1, 0)]
+        diff = set(a) ^ set(b)
+        assert not diff
 
+    def test_Bishop_outleft_B(self):
+        r = pieces.Bishop(5, -2, "Black")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_Bishop_outleft_W(self):
+        r = pieces.Bishop(5, -2, "White")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_Bishop_outright_B(self):
+        r = pieces.Bishop(7, 9, "Black")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_Bishop_outright_W(self):
+        r = pieces.Bishop(7, 9, "White")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_Bishop_outup_B(self):
+        r = pieces.Bishop(-3, 2, "Black")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_Bishop_outup_W(self):
+        r = pieces.Bishop(-3, 2, "White")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_Bishop_outdown_B(self):
+        r = pieces.Bishop(10, 2, "Black")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_Bishop_outdown_W(self):
+        r = pieces.Bishop(10, 2, "White")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    
 ###########################################
 
 # Queen
