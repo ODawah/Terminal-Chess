@@ -44,7 +44,7 @@ class Rook(piece):
                     continue
                 else:
                     valid.append((self.x, j))
-            print(valid)
+            
             return valid
         else:
             return ("piece outside of the board")
@@ -119,7 +119,46 @@ class Bishop(piece):
 class Queen(piece):
 
     def valid_moves(self):
-        return False
+        valid = []
+        
+        if(self.x in range(0, 8) and self.y in range(0, 8)):
+            for i in [x for x in range(0, 8) if x != self.x]:
+                valid.append((i, self.y))
+            for j in range(0, 8):
+                if(j == self.y):
+                    continue
+                else:
+                    valid.append((self.x, j))
+            for i in range(1, 8):
+                x2 = self.x + i 
+                y2 = self.y + i
+                if (x2 in range(0, 8)) and (y2 in range(0, 8)):
+                    valid.append( (x2, y2) )
+            
+            for i in range(1, 8):
+                x2 = self.x - i 
+                y2 = self.y - i
+                if (x2 in range(0, 8)) and (y2 in range(0, 8)):
+                    valid.append( (x2, y2) )
+
+            for i in range(1, 8):
+                x2 = self.x + i 
+                y2 = self.y - i
+                if (x2 in range(0, 8)) and (y2 in range(0, 8)):
+                    valid.append( (x2, y2) )
+            
+            for i in range(1, 8):
+                x2 = self.x - i 
+                y2 = self.y + i
+                if (x2 in range(0, 8)) and (y2 in range(0, 8)):
+                    valid.append( (x2, y2) )
+
+
+
+            return valid
+
+        else:
+           return ("piece outside of the board")
         # valid = []
 
         # if(self.x in range(0, 8) and self.y in range (0,8)):

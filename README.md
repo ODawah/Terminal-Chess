@@ -69,7 +69,8 @@ we made 11 tests for Bishop piece
 --
 we made three tests for Queen piece
 ---------------------------------
-1- check when it's blocked and can't move
-2- check when it's free to move
-3- check when it has limited path
+1- 4 tests at the corners of the board
+2- 2 tests at the right and left of the board
+3- 1 test for the piece at the middle of the board
+4- 4 tests check if the piece is outside of the board
 ---------------------------------

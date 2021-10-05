@@ -627,19 +627,149 @@ class Test_unit_bishop:
 
 # Queen
 
+class Test_unit_queen:
+    def test_queen_upleft_W(self):
+        b = pieces.Queen(0, 0, "White")
+        a = b.valid_moves()
+        b = [(0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7), (1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0), (7, 0),
+             (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7)]
+        diff = set(a) ^ set(b)
+        assert not diff
+    
+    def test_queen_upleft_B(self):
+        b = pieces.Queen(0, 0, "Black")
+        a = b.valid_moves()
+        b = [(0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7), (1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0), (7, 0),
+             (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7)]
+        diff = set(a) ^ set(b)
+        assert not diff
 
-def test_queen_blocked():
-    q = pieces.Queen(7, 3, "Black")
-    assert q.valid_moves == []
+    def test_queen_upright_W(self):
+        b = pieces.Queen(0, 7, "White")
+        a = b.valid_moves()
+        b = [(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (1, 7), (2, 7), (3, 7), (4, 7), (5, 7), (6, 7), (7, 7),
+             (1, 6), (2,5), (3, 4), (4, 3), (5, 2), (6, 1), (7, 0)]
+        diff = set(a) ^ set(b)
+        assert not diff
+    
+    def test_queen_upright_B(self):
+        b = pieces.Queen(0, 7, "Black")
+        a = b.valid_moves()
+        b = [(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (1, 7), (2, 7), (3, 7), (4, 7), (5, 7), (6, 7), (7, 7),
+             (1, 6), (2,5), (3, 4), (4, 3), (5, 2), (6, 1), (7, 0)]
+        diff = set(a) ^ set(b)
+        assert not diff
+
+    def test_queen_downleft_W(self):
+        b = pieces.Queen(7, 0, "White")
+        a = b.valid_moves()
+        b = [(7, 1), (7, 2), (7, 3), (7, 4), (7, 5), (7, 6), (7, 7),(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0),
+             (6, 1), (5, 2), (4, 3), (3, 4), (2, 5), (1, 6), (0, 7)]
+        diff = set(a) ^ set(b)
+        assert not diff
+    
+    def test_queen_downleft_B(self):
+        b = pieces.Queen(7, 0, "Black")
+        a = b.valid_moves()
+        b = [(7, 1), (7, 2), (7, 3), (7, 4), (7, 5), (7, 6), (7, 7),(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0),
+             (6, 1), (5, 2), (4, 3), (3, 4), (2, 5), (1, 6), (0, 7)]
+        diff = set(a) ^ set(b)
+        assert not diff
+
+    def test_queen_downright_W(self):
+        b = pieces.Queen(7, 7, "White")
+        a = b.valid_moves()
+        b = [(7, 0), (7, 1), (7, 2), (7, 3), (7, 4), (7, 5), (7, 6), (0, 7), (1, 7), (2, 7), (3, 7), (4, 7), (5, 7), (6, 7),
+             (6, 6), (5, 5), (4, 4), (3, 3), (2, 2), (1, 1), (0, 0)]
+        diff = set(a) ^ set(b)
+        assert not diff
+
+    def test_queen_downright_B(self):
+        b = pieces.Queen(7, 7, "Black")
+        a = b.valid_moves()
+        b = [(7, 0), (7, 1), (7, 2), (7, 3), (7, 4), (7, 5), (7, 6), (0, 7), (1, 7), (2, 7), (3, 7), (4, 7), (5, 7), (6, 7),
+             (6, 6), (5, 5), (4, 4), (3, 3), (2, 2), (1, 1), (0, 0)]
+        diff = set(a) ^ set(b)
+        assert not diff
+
+    def test_queen_midleft_W(self):
+        b = pieces.Queen(4, 0, "White")
+        a = b.valid_moves()
+        b = [(4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (4, 7), (0, 0), (1, 0), (2, 0), (3, 0), (5, 0), (6, 0), (7, 0),
+             (3, 1), (2, 2), (1, 3), (0, 4), (5, 1), (6, 2), (7, 3)]
+        diff = set(a) ^ set(b)
+        assert not diff
+
+    def test_queen_midleft_B(self):
+        b = pieces.Queen(4, 0, "Black")
+        a = b.valid_moves()
+        b = [(4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (4, 7), (0, 0), (1, 0), (2, 0), (3, 0), (5, 0), (6, 0), (7, 0),
+             (3, 1), (2, 2), (1, 3), (0, 4), (5, 1), (6, 2), (7, 3)]
+        diff = set(a) ^ set(b)
+        assert not diff
+
+    def test_queen_midright_W(self):
+        b = pieces.Queen(4, 7, "White")
+        a = b.valid_moves()
+        b = [(4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (0, 7), (1, 7), (2, 7), (3, 7), (5, 7), (6, 7), (7, 7),
+             (3, 6), (2, 5), (1, 4), (0, 3), (5, 6), (6, 5), (7, 4)]
+        diff = set(a) ^ set(b)
+        assert not diff
 
 
-def test_queen_free():
-    q = pieces.Queen(3, 7, "White")
-    assert q.valid_moves == [(2, 7), (3, 6), (3, 5), (3, 4),
-                             (3, 3), (3, 2), (3, 1), (3, 0), (4, 7), (5, 7), (6, 7)]
+    def test_queen_midright_B(self):
+        b = pieces.Queen(4, 7, "Black")
+        a = b.valid_moves()
+        b = [(4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (0, 7), (1, 7), (2, 7), (3, 7), (5, 7), (6, 7), (7, 7),
+             (3, 6), (2, 5), (1, 4), (0, 3), (5, 6), (6, 5), (7, 4)]
+        diff = set(a) ^ set(b)
+        assert not diff
+
+    def test_queen_middle_W(self):
+        b = pieces.Queen(4, 3, "White")
+        a = b.valid_moves()
+        b = [(4, 0), (4, 1), (4, 2), (4, 4), (4, 5), (4, 6), (4, 7), (0, 3), (1, 3), (2, 3), (3, 3), (5, 3), (6, 3), (7, 3),
+             (5, 4), (6, 5), (7, 6), (5, 2), (6, 1), (7, 0), (3, 4), (2, 5), (1, 6), (0, 7), (3, 2), (2, 1), (1, 0)]
+        diff = set(a) ^ set(b)
+        assert not diff
+    
+    def test_queen_middle_B(self):
+        b = pieces.Queen(4, 3, "Black")
+        a = b.valid_moves()
+        b = [(4, 0), (4, 1), (4, 2), (4, 4), (4, 5), (4, 6), (4, 7), (0, 3), (1, 3), (2, 3), (3, 3), (5, 3), (6, 3), (7, 3),
+             (5, 4), (6, 5), (7, 6), (5, 2), (6, 1), (7, 0), (3, 4), (2, 5), (1, 6), (0, 7), (3, 2), (2, 1), (1, 0)]
+        diff = set(a) ^ set(b)
+        assert not diff
 
 
-def test_queen_path_limited():
-    q = pieces.Queen(3, 0, "Black")
-    assert q.valid_moves == [(2, 0), (1, 0), (3, 1),
-                             (3, 2), (4, 1), (5, 2), (4, 0), (5, 0)]
+    def test_Queen_outleft_B(self):
+        r = pieces.Queen(5, -2, "Black")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_Queen_outleft_W(self):
+        r = pieces.Queen(5, -2, "White")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_Queen_outright_B(self):
+        r = pieces.Queen(7, 9, "Black")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_Queen_outright_W(self):
+        r = pieces.Queen(7, 9, "White")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_Queen_outup_B(self):
+        r = pieces.Queen(-3, 2, "Black")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_Queen_outup_W(self):
+        r = pieces.Queen(-3, 2, "White")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_Queen_outdown_B(self):
+        r = pieces.Queen(10, 2, "Black")
+        assert r.valid_moves() == ("piece outside of the board")
+
+    def test_Queen_outdown_W(self):
+        r = pieces.Queen(10, 2, "White")
+        assert r.valid_moves() == ("piece outside of the board")
