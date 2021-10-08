@@ -1,12 +1,14 @@
 class piece:
-    def __init__(self, x, y, color):
+    def __init__(self, x, y, color,label):
         self.x = x
         self.y = y
         self.color = color
+        self.label = label
+
 
 
 class Pawn(piece):
-
+    
     def valid_moves(self):
         valid = []
 
@@ -67,15 +69,6 @@ class Knight(piece):
             return valid
         else:
             return ("piece outside of the board")
-    # def __init__(self, x2, y2):
-    #     self.x2 = x2
-    #     self.y2 = y2
-
-    # def rule(self, x1, y1):
-    #     if (abs(self.y2 - y1) == 2 and abs(self.x2 - x1) == 1) or (abs(self.y2 - y1) == 1 and abs(self.x2 - x1) == 2):
-    #         return True
-    #     else:
-    #         return False
 
 
 class Bishop(piece):
@@ -159,33 +152,7 @@ class Queen(piece):
 
         else:
            return ("piece outside of the board")
-        # valid = []
 
-        # if(self.x in range(0, 8) and self.y in range (0,8)):
-        #     x2 = max((self.y-self.x, 0))
-        #     y2 = max((self.x-self.y, 0))
-
-        #     while x2 < 8 and y2 < 8:
-        #         valid.append((x2, y2))
-        #         x2 += 1
-        #         y2 += 1
-
-        #     return valid
-        # else:
-        #     return ("piece outside of the board")
-    # def __init__(self, x2, y2):
-    #     self.x2 = x2
-    #     self.y2 = y2
-
-    # def rule(self, x1, y1):
-    #     if (
-    #         (abs((x1 - self.x2) / (y1 - self.y2)) == 1)
-    #         or ((x1 - self.x2) == 0)
-    #         or ((y1 - self.y2) == 0)
-    #     ):
-    #         return True
-    #     else:
-    #         return False
 
 
 class King(piece):
