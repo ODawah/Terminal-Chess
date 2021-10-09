@@ -21,6 +21,7 @@ if __name__ == "__main__":
 
         while b.input_checker(PLAYER_1,Wx1,Wy1,Wx2,Wy2) == False:
             b.draw_board()
+            print("\nplay with your pieces")
             print("\nPlayer 1")
             print("enter x1 position")
             Wx1 = input()
@@ -47,6 +48,7 @@ if __name__ == "__main__":
 
         while b.input_checker(PLAYER_2,Bx1,By1,Bx2,By2) == False:
             b.draw_board()
+            print("play with your pieces")
             print("\nPlayer 2")
             print("enter x1 position")
             Bx1 = input()

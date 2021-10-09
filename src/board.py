@@ -29,21 +29,19 @@ class Board:
         if(x1 in range(0,8) and x2 in range(0,8) and y1 in range(0,8) and y2 in range(0,8)):
             if player == 1:
                 if self.input_checker(player,x1,y1,x2,y2):
-                    self.board[x1][y1] = "-"
+                    self.board_change(x1,y1,x2,y2)
                     self.draw_board()
-                else:
-                    self.draw_board()
-                    print("play with your pieces")
+                    self.piece_type(x1,y1,x2,y2)
+
             elif player == 2:
                 if self.input_checker(player,x1,y1,x2,y2):
-                    self.board[x1][y1] = "-"
+                    self.board_change(x1,y1,x2,y2)
                     self.draw_board()
-                else:
-                    self.draw_board()
-                    print("play with your pieces")
+                    self.piece_type(x1,y1,x2,y2)
+
         else:
             self.draw_board()
-            self.printer("You can only move pieces inside of the board")
+            print("You can only move pieces inside of the board")
         
 
     def draw_board(self):
@@ -73,18 +71,25 @@ class Board:
         y2 = int (y2)
         if player == 1:
                 if self.board[x1][y1] == "-" or self.board[x1][y1].color == "Black":
-                    print("play with your pieces")
+                    
                     return False
                 else:
                     return True
         elif player == 2:
                 if self.board[x1][y1] == "-" or self.board[x1][y1].color == "White":
+                    print("play with your pieces")
                     return False
                 else:
                     return True
+    
+    def board_change(self,x1,y1,x2,y2):
+        self.board[x1][y1] = "-"
 
+        piece_type = type(self.board[x1][y1])
+        print(piece_type.__name__)
 
-    def printer(self,message):
-        print(message)
+    def piece_type(self,x1,y1,x2,y2):
         
+        print(self.board[x1][y1].__class__.__name__)
+
         
