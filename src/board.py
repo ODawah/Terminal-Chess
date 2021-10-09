@@ -20,20 +20,24 @@ class Board:
         [  Pawn(6,0,"Black", "♟︎")  ,  Pawn(6,1,"Black", "♟︎")    ,  Pawn(6,2,"Black", "♟︎")    ,  Pawn(6,3,"Black", "♟︎")   ,  Pawn(6,4,"Black", "♟︎")  ,  Pawn(6,5,"Black", "♟︎")    ,  Pawn(6,6,"Black", "♟︎")    ,  Pawn(6,7,"Black", "♟︎")  ],
         [  Rook(7,0,"Black", "♜")  ,  Bishop(7,1,"Black", "♝")  ,  Knight(7,2,"Black", "♞")  ,  Queen(7,3,"Black", "♛")  ,  King(7,4,"Black", "♚")  ,  Knight(7,5,"Black", "♞")  ,  Bishop(7,6,"Black", "♝")  ,  Rook(7,7,"Black", "♜")  ],
     ]
-
+    
     def make_move(self,player,x1,y1,x2,y2):
         x1 = int(x1)
+        x2 = int(x2)
         y1 = int(y1)
-        if player == 1:
-            if(self.board[x1][y1].color == "White"):
-                self.board[x1][y1] == "-"
-            else:
-                return False
-        elif player == 2:
-            if(self.board[x1][y1].color == "Black"):
-                self.board[x1][y1] == "-"
-            else:
-                print("play with your pieces only")
+        y2 = int (y2)
+        if(x1 in range(0,8) and x2 in range(0,8) and y1 in range(0,8) and y2 in range(0,8)):
+            if player == 1:
+                if self.board[x1][y1] == "-" or self.board[x1][y1].color == "Black":
+                    print("play with your pieces")
+                else:
+                    self.board[x1][y1] = "-"
+            elif player == 2:
+                self.board[x1][y1] = "-"
+        else:
+            self.draw_board()
+            self.printer("You can only move pieces inside of the board")
+        
 
     def draw_board(self):
         os.system('clear')
@@ -45,5 +49,7 @@ class Board:
                 else:
                     print(self.board[i][j].label, end=" ")
 
+    def printer(self,message):
+        print(message)
         
         

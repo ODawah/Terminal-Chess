@@ -18,10 +18,11 @@ if __name__ == "__main__":
         x2 = input()
         print("enter y2 position")
         y2 = input()
-
+        
         b.make_move(PLAYER_1,x1,y1,x2,y2)
+        
 
-        b.draw_board()
+
         print("\nPlayer 2")
         print("enter x1 position")
         x1 = input()
