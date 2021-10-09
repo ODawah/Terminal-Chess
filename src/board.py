@@ -28,12 +28,19 @@ class Board:
         y2 = int (y2)
         if(x1 in range(0,8) and x2 in range(0,8) and y1 in range(0,8) and y2 in range(0,8)):
             if player == 1:
-                if self.board[x1][y1] == "-" or self.board[x1][y1].color == "Black":
-                    print("play with your pieces")
-                else:
+                if self.input_checker(player,x1,y1,x2,y2):
                     self.board[x1][y1] = "-"
+                    self.draw_board()
+                else:
+                    self.draw_board()
+                    print("play with your pieces")
             elif player == 2:
-                self.board[x1][y1] = "-"
+                if self.input_checker(player,x1,y1,x2,y2):
+                    self.board[x1][y1] = "-"
+                    self.draw_board()
+                else:
+                    self.draw_board()
+                    print("play with your pieces")
         else:
             self.draw_board()
             self.printer("You can only move pieces inside of the board")
@@ -48,6 +55,34 @@ class Board:
                     print("-", end=" ")
                 else:
                     print(self.board[i][j].label, end=" ")
+
+    def initial_board(self):
+        os.system('clear')
+        for i in range(len(self.board)):
+            print("\n")
+            for j in range(len(self.board[i])):
+                if(self.board[i][j] == "-"):
+                    print("-", end=" ")
+                else:
+                    print(self.board[i][j].label, end=" ")
+    
+    def input_checker(self,player,x1,y1,x2,y2):
+        x1 = int(x1)
+        x2 = int(x2)
+        y1 = int(y1)
+        y2 = int (y2)
+        if player == 1:
+                if self.board[x1][y1] == "-" or self.board[x1][y1].color == "Black":
+                    print("play with your pieces")
+                    return False
+                else:
+                    return True
+        elif player == 2:
+                if self.board[x1][y1] == "-" or self.board[x1][y1].color == "White":
+                    return False
+                else:
+                    return True
+
 
     def printer(self,message):
         print(message)
