@@ -37,22 +37,91 @@ class Board:
     def clear_path(self, start, end):
         x1, y1 = start
         x2, y2 = end
-        if self.board[x1][y1].color == self.board[x2][y2].color:
-            return False
-        if self.board[x1][y1].label == ("♙" or "♟︎"):
-            moves = self.board[x1][y1].valid_moves()
-            if (x2, y2) in moves:
-                for i in range(0,2):
-                    e1 = moves[i][0]
-                    e2 = moves[i][1]
-                    if self.board[e1][e2].label != "-":
-                        print(e1)
-                        print(e2)
+        
+        if end in self.board[x1][y1].valid_moves():
+            if self.board[x1][y1].color != self.board[x2][y2].color:
+                flag = False
+                xdiff = abs(x2 - x1)
+                ydiff = abs(y2 - y1)
+                if isinstance(self.board[x1][x2],Knight):
+                    return True
+                if x2 > x1 and y2 == y1:
+                    for i in range(1, xdiff+1):
+                        if not isinstance(self.board[x1+i][y1], Blank):
+                            flag = True
+                            break
+                    if flag:
                         return False
-                return True
+                    else:
+                        return True
+                elif x2 < x1 and y2 == y1:
+                    for i in range(1, xdiff+1):
+                        if not isinstance(self.board[x1-i][y1], Blank):
+                            flag = True
+                            break
+                    if flag:
+                        return False
+                    else:
+                        return True
+                elif y2 < y1 and x2 == x1:
+                    for i in range(1, ydiff+1):
+                        if not isinstance(self.board[x1][y1-i], Blank):
+                            flag = True
+                            break
+                    if flag:
+                        return False
+                    else:
+                        return True
+                elif y2 > y1 and x2 == x1:
+                    for i in range(1, ydiff+1):
+                        if not isinstance(self.board[x1][y1+i], Blank):
+                            flag = True
+                            break
+                    if flag:
+                        return False
+                    else:
+                        return True
+                
+                elif y2 > y1 and x2 > x1:
+                    for i in range(1, ydiff+1):
+                        if not isinstance(self.board[x1+i][y1+i], Blank):
+                            flag = True
+                            break
+                    if flag:
+                        return False
+                    else:
+                        return True
+                elif y2 < y1 and x2 < x1:
+                    for i in range(1, ydiff+1):
+                        if not isinstance(self.board[x1-i][y1-i], Blank):
+                            flag = True
+                            break
+                    if flag:
+                        return False
+                    else:
+                        return True
+                elif y2 > y1 and x2 < x1:
+                    for i in range(1, ydiff+1):
+                        if not isinstance(self.board[x1-i][y1+i], Blank):
+                            flag = True
+                            break
+                    if flag:
+                        return False
+                    else:
+                        return True
+                elif y2 < y1 and x2 > x1:
+                    for i in range(1, ydiff+1):
+                        if not isinstance(self.board[x1+i][y1-i], Blank):
+                            flag = True
+                            break
+                    if flag:
+                        return False
+                    else:
+                        return True
+            else:
+                return False
         else:
-            return True
-            
+            return False
 
 
     def make_move(self, player, src, dist):
@@ -117,14 +186,5 @@ class Board:
                 else:
                     return True
     
-    def board_change(self,x1,y1,x2,y2):
-        self.board[x1][y1] = "-"
-
-        piece_type = type(self.board[x1][y1])
-        print(piece_type.__name__)
-
-    def piece_type(self,x1,y1,x2,y2):
-        
-        print(type(self.board[x1][y1]))
 
         
