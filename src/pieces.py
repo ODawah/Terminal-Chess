@@ -6,6 +6,13 @@ class piece:
         self.label = label
 
 
+class Blank(piece):
+        def valid_moves(self):
+            if(self.x in range(0, 8) and self.y in range(0, 8)):
+                    pass
+            else:
+                return ("piece outside of the board")
+
 
 class Pawn(piece):
     
